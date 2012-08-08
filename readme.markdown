@@ -1,0 +1,1 @@
+A Chrome extension that hightlights the search body from the link you just clicked on Google.

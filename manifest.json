@@ -1,0 +1,20 @@
+{
+	"name": "Search Hi-liter",
+	"version": "0.1",
+	"manifest_version": 2,
+	"description": "Quickly highlight and find search terms",
+	"browser_action": {
+		"default_icon": "icon.png"
+	},
+	"background": {
+		"scripts": ["storage.js"]
+	},
+	"permissions": [
+		"storage",
+		"webNavigation"
+	],
+	"content_scripts":[ {
+		"matches": ["*://*/*"],
+		"js": ["jquery.js", "hilite.js"]
+	} ]
+}
