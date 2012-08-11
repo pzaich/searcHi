@@ -7,16 +7,14 @@
 		"default_icon": "icon.png"
 	},
 	"background": {
-		"scripts": ["storage.js"],
 		"background_page": "background.html"
 	},
 	"permissions": [
-		"storage",
-		"webNavigation"
+		"storage"
 	],
 	"content_scripts":[ {
 		"matches": ["*://*/*"],
-		"js": ["jquery.js", "hilite.js"]
+		"js": ["jquery.js", "highlight.js", "hilite.js"]
 	} ]
 	// ,
 	// "icons" : {
