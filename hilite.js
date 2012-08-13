@@ -8,18 +8,8 @@ $(document).ready(function() {
 		boundResults[websiteKey] = descriptionChunks;
 		storage.set(boundResults);
 	});
-	storage.get(window.location.href, function(result){
-		var terms = result;
-		if (terms[window.location.href]) {
-			
-			$(".highlight").css({ backgroundColor: "#ffff88"});
-			$.each(terms[window.location.href], function(index, chunk){
-				alert(chunk);
-			});
-			//storage.remove(window.location.href);
-		}
-	});
 
+	highlight(storage);
 });
 
 	
@@ -35,7 +25,37 @@ var clean_chunks = function (descriptionChunks) {
 			return null
 		} else {
 			return $.trim(chunk);
-		}	
+		};
 	});
 };
+
+var highlight = function (storage) {
+	storage.get(window.location.href, function(result){
+		var terms = result;
+		if (terms[window.location.href]) {
+			markTerms(terms, storage);
+		};
+	});
+}
+
+var markTerms = function (terms, storage) {
+	tagHighlight(terms);
+	if ($('.highlight').length === 0){
+		console.log("backup highlight");
+		tagHighlight(terms);
+	};
+	$(".highlight").css({ backgroundColor: "#ffff88", color: "#333333"});
+	storage.remove(window.location.href);
+}
+
+var tagHighlight = function (terms, splitToWords) {
+	$.each(terms[window.location.href], function(index, chunk){
+		if (splitToWords){
+			chunk = chunk.split(' ');
+		};
+		$('body').highlight(chunk, { wordsOnly: true });
+	});
+}
+
+
 
