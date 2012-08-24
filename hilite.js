@@ -42,7 +42,7 @@ var markTerms = function (terms, storage) {
 	tagHighlight(terms);
 	if ($('.highlight').length === 0){
 		console.log("backup highlight");
-		tagHighlight(terms);
+		tagHighlight(terms, true);
 	};
 	$(".highlight").css({ backgroundColor: "#ffff88", color: "#333333"});
 	storage.remove(window.location.href);
